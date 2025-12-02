@@ -67,10 +67,10 @@ start = 'Gates Hillman Center'
 end = 'Hunt Library'
 
 # YOUR CODE HERE: Use nx.shortest_path() to find the shortest route
-shortest_path = nx.shortest_path(G, start, end)
+shortest_path = nx.shortest_path(G, start, end, weight='weight')
 
 # YOUR CODE HERE: Use nx.shortest_path_length() to find the walking time
-walking_time = nx.shortest_path_length(G, start, end)
+walking_time = nx.shortest_path_length(G, start, end, weight='weight')
 
 print(f"\nShortest route from {start} to {end}:")
 print(f"  Route: {' -> '.join(shortest_path)}")
@@ -89,7 +89,7 @@ for building in G.nodes():
     print(f"  {building:25s}: {degree} connections")
 
 # TODO: Calculate betweenness centrality (which buildings are most "central")
-betweenness = nx.betweenness_centrality(G)
+betweenness = nx.betweenness_centrality(G, weight='weight')
 most_central = max(betweenness, key=betweenness.get)
 print(f"\nMost central building: {most_central}")
 
@@ -162,7 +162,7 @@ for building1, building2, time in new_paths:
 new_start = 'Gates Hillman Center'
 new_end = 'Hunt Library'
 
-new_shortest_path = nx.shortest_path(new_G, new_start, new_end)
+new_shortest_path = nx.shortest_path(new_G, new_start, new_end, weight='weight')
 print("New shortest path = ", new_shortest_path)
 
 print("\n3. Calculate the average walking time between any two buildings:")
